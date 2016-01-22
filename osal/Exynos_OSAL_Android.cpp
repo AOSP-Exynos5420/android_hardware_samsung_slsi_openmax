@@ -109,7 +109,7 @@ OMX_ERRORTYPE Exynos_OSAL_LockANBHandle(
         break;
     }
 
-    if (mapper.lock(bufferHandle, usage, bounds, vaddr) != 0) {
+    if (mapper.lock(bufferHandle, static_cast<int>(usage), bounds, vaddr) != 0) {
         Exynos_OSAL_Log(EXYNOS_LOG_ERROR, "%s: mapper.lock() fail", __func__);
         ret = OMX_ErrorUndefined;
         goto EXIT;
