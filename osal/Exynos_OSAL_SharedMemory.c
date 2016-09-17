@@ -82,7 +82,7 @@ OMX_HANDLETYPE Exynos_OSAL_SharedMemory_Open()
         goto EXIT;
     }
 
-    pHandle->hIONHandle = IONClient;
+    pHandle->hIONHandle = (OMX_HANDLETYPE)IONClient;
 
     if (OMX_ErrorNone != Exynos_OSAL_MutexCreate(&pHandle->hSMMutex)) {
         Exynos_OSAL_Log(EXYNOS_LOG_ERROR, "Exynos_OSAL_MutexCreate(hSMMutex) is failed");
@@ -318,7 +318,7 @@ OMX_PTR Exynos_OSAL_SharedMemory_Map(OMX_HANDLETYPE handle, OMX_U32 size, unsign
     pElement = (EXYNOS_SHAREDMEM_LIST *)Exynos_OSAL_Malloc(sizeof(EXYNOS_SHAREDMEM_LIST));
     Exynos_OSAL_Memset(pElement, 0, sizeof(EXYNOS_SHAREDMEM_LIST));
 
-    IONBuffer = (OMX_PTR)ionfd;
+    IONBuffer = (ion_buffer)ionfd;
 
     if (IONBuffer <= 0) {
         Exynos_OSAL_Log(EXYNOS_LOG_ERROR, "ion_alloc Error: %d", IONBuffer);

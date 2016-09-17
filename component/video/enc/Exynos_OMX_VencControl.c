@@ -232,7 +232,7 @@ OMX_ERRORTYPE Exynos_OMX_AllocateBuffer(
             pExynosPort->bufferStateAllocate[i] = (BUFFER_STATE_ALLOCATED | HEADER_STATE_ALLOCATED);
             INIT_SET_SIZE_VERSION(pTempBufferHdr, OMX_BUFFERHEADERTYPE);
             if (eMemType == SECURE_MEMORY)
-                pTempBufferHdr->pBuffer = fdTempBuffer;
+                pTempBufferHdr->pBuffer = (OMX_U8 *)fdTempBuffer;
             else
                 pTempBufferHdr->pBuffer = pTempBuffer;
             pTempBufferHdr->nAllocLen      = nSizeBytes;
@@ -1550,7 +1550,7 @@ OMX_ERRORTYPE Exynos_OMX_VideoEncodeSetParameter(
         Exynos_OSAL_Memcpy(&pExynosPort->portDefinition, pPortDef, pPortDef->nSize);
         if (nPortIndex == INPUT_PORT_INDEX) {
             pExynosPort = &pExynosComponent->pExynosPort[OUTPUT_PORT_INDEX];
-            Exynos_UpdateFrameSize(pOMXComponent);
+            //Exynos_UpdateFrameSize(pOMXComponent);
             Exynos_OSAL_Log(EXYNOS_LOG_TRACE, "pExynosOutputPort->portDefinition.nBufferSize: %d",
                             pExynosPort->portDefinition.nBufferSize);
         }

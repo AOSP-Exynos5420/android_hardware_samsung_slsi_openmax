@@ -226,7 +226,7 @@ OMX_ERRORTYPE Exynos_OMX_AllocateBuffer(
             pExynosPort->bufferStateAllocate[i] = (BUFFER_STATE_ALLOCATED | HEADER_STATE_ALLOCATED);
             INIT_SET_SIZE_VERSION(temp_bufferHeader, OMX_BUFFERHEADERTYPE);
             if (mem_type == SECURE_MEMORY)
-                temp_bufferHeader->pBuffer = temp_buffer_fd;
+                temp_bufferHeader->pBuffer = (OMX_U8 *)temp_buffer_fd;
             else
                 temp_bufferHeader->pBuffer = temp_buffer;
             temp_bufferHeader->nAllocLen      = nSizeBytes;
@@ -645,7 +645,7 @@ OMX_ERRORTYPE Exynos_ResolutionUpdate(OMX_COMPONENTTYPE *pOMXComponent)
     pOutputPort->portDefinition.nBufferCountActual  = pOutputPort->newPortDefinition.nBufferCountActual;
     pOutputPort->portDefinition.nBufferCountMin     = pOutputPort->newPortDefinition.nBufferCountMin;
 
-    Exynos_UpdateFrameSize(pOMXComponent);
+    //Exynos_UpdateFrameSize(pOMXComponent);
 
     return ret;
 }
@@ -1653,7 +1653,7 @@ OMX_ERRORTYPE Exynos_Shared_ANBBufferToData(EXYNOS_OMX_DATABUFFER *pUseBuffer, E
         if ((pUseBuffer->bufferHeader != NULL) &&
             (pUseBuffer->bufferHeader->pBuffer != NULL) &&
             (pExynosPort->exceptionFlag == GENERAL_STATE)) {
-            Exynos_OSAL_LockANBHandle(pUseBuffer->bufferHeader->pBuffer, width, height, pExynosPort->portDefinition.format.video.eColorFormat, &stride, planes);
+            Exynos_OSAL_LockANBHandle((OMX_U32)pUseBuffer->bufferHeader->pBuffer, width, height, pExynosPort->portDefinition.format.video.eColorFormat, &stride, planes);
             pUseBuffer->dataLen = sizeof(void *);
         } else {
             ret = OMX_ErrorBadParameter;

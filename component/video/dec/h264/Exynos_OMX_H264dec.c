@@ -832,7 +832,7 @@ OMX_ERRORTYPE H264CodecCheckResolutionChange(OMX_COMPONENTTYPE *pOMXComponent)
             pOutputPortDefinition->nBufferCountActual       = pOutputPort->portDefinition.nBufferCountActual;
             pOutputPortDefinition->nBufferCountMin          = pOutputPort->portDefinition.nBufferCountMin;
             if (pVideoDec->bReconfigDPB != OMX_TRUE) {
-                Exynos_UpdateFrameSize(pOMXComponent);
+                //Exynos_UpdateFrameSize(pOMXComponent);
             }
 
             /** Send Port Settings changed call back **/
@@ -858,7 +858,7 @@ OMX_ERRORTYPE H264CodecCheckResolutionChange(OMX_COMPONENTTYPE *pOMXComponent)
             pOutputPortDefinition->nBufferCountActual       = pH264Dec->hMFCH264Handle.maxDPBNum;
             pOutputPortDefinition->nBufferCountMin          = pH264Dec->hMFCH264Handle.maxDPBNum;
             if (pVideoDec->bReconfigDPB != OMX_TRUE) {
-                Exynos_UpdateFrameSize(pOMXComponent);
+                //Exynos_UpdateFrameSize(pOMXComponent);
             }
             pOutputPort->exceptionFlag = NEED_PORT_DISABLE;
 
@@ -881,7 +881,7 @@ OMX_ERRORTYPE H264CodecCheckResolutionChange(OMX_COMPONENTTYPE *pOMXComponent)
         pInputPortDefinition->format.video.nStride      = ((pH264Dec->hMFCH264Handle.codecOutbufConf.nFrameWidth + 15) & (~15));
         pInputPortDefinition->format.video.nSliceHeight = ((pH264Dec->hMFCH264Handle.codecOutbufConf.nFrameHeight + 15) & (~15));
         if (pVideoDec->bReconfigDPB != OMX_TRUE) {
-            Exynos_UpdateFrameSize(pOMXComponent);
+            //Exynos_UpdateFrameSize(pOMXComponent);
         }
 
         /** Send crop info call back **/

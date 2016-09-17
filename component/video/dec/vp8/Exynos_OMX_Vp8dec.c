@@ -685,7 +685,7 @@ OMX_ERRORTYPE VP8CodecCheckResolutionChange(OMX_COMPONENTTYPE *pOMXComponent)
             pOutputPortDefinition->nBufferCountActual       = pOutputPort->portDefinition.nBufferCountActual;
             pOutputPortDefinition->nBufferCountMin          = pOutputPort->portDefinition.nBufferCountMin;
             if (pVideoDec->bReconfigDPB != OMX_TRUE)
-                Exynos_UpdateFrameSize(pOMXComponent);
+                //Exynos_UpdateFrameSize(pOMXComponent);
             pOutputPort->exceptionFlag = NEED_PORT_DISABLE;
 
             /** Send Port Settings changed call back **/
@@ -709,7 +709,7 @@ OMX_ERRORTYPE VP8CodecCheckResolutionChange(OMX_COMPONENTTYPE *pOMXComponent)
             pOutputPortDefinition->nBufferCountActual       = pVp8Dec->hMFCVp8Handle.maxDPBNum;
             pOutputPortDefinition->nBufferCountMin          = pVp8Dec->hMFCVp8Handle.maxDPBNum;
             if (pVideoDec->bReconfigDPB != OMX_TRUE)
-                Exynos_UpdateFrameSize(pOMXComponent);
+                //Exynos_UpdateFrameSize(pOMXComponent);
             pOutputPort->exceptionFlag = NEED_PORT_DISABLE;
 
             /** Send Port Settings changed call back **/
@@ -731,7 +731,7 @@ OMX_ERRORTYPE VP8CodecCheckResolutionChange(OMX_COMPONENTTYPE *pOMXComponent)
         pInputPortDefinition->format.video.nStride      = ((pVp8Dec->hMFCVp8Handle.codecOutbufConf.nFrameWidth + 15) & (~15));
         pInputPortDefinition->format.video.nSliceHeight = ((pVp8Dec->hMFCVp8Handle.codecOutbufConf.nFrameHeight + 15) & (~15));
         if (pVideoDec->bReconfigDPB != OMX_TRUE)
-            Exynos_UpdateFrameSize(pOMXComponent);
+            //Exynos_UpdateFrameSize(pOMXComponent);
 
         /** Send crop info call back **/
         (*(pExynosComponent->pCallbacks->EventHandler))

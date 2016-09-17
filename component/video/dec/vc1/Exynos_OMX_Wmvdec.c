@@ -969,7 +969,7 @@ OMX_ERRORTYPE WmvCodecSrcSetup(OMX_COMPONENTTYPE *pOMXComponent, EXYNOS_OMX_DATA
             pExynosInputPort->portDefinition.format.video.nStride = ((pWmvDec->hMFCWmvHandle.codecOutbufConf.nFrameWidth + 15) & (~15));
             pExynosInputPort->portDefinition.format.video.nSliceHeight = ((pWmvDec->hMFCWmvHandle.codecOutbufConf.nFrameHeight + 15) & (~15));
 
-            Exynos_UpdateFrameSize(pOMXComponent);
+            //Exynos_UpdateFrameSize(pOMXComponent);
 
             /** Send Port Settings changed call back **/
             (*(pExynosComponent->pCallbacks->EventHandler))
@@ -994,7 +994,7 @@ OMX_ERRORTYPE WmvCodecSrcSetup(OMX_COMPONENTTYPE *pOMXComponent, EXYNOS_OMX_DATA
             pExynosOutputPort->portDefinition.nBufferCountActual = pWmvDec->hMFCWmvHandle.maxDPBNum - 2;
             pExynosOutputPort->portDefinition.nBufferCountMin = pWmvDec->hMFCWmvHandle.maxDPBNum - 2;
 
-            Exynos_UpdateFrameSize(pOMXComponent);
+            //Exynos_UpdateFrameSize(pOMXComponent);
 
             /** Send Port Settings changed call back **/
             (*(pExynosComponent->pCallbacks->EventHandler))
